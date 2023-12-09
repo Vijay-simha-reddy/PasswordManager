@@ -84,11 +84,15 @@ class PasswordManager extends Component {
     })
   }
 
-  deletePassword = e => {
-    const {filteredList} = this.state
-    const remainList = filteredList.filter(i => i.id !== e)
-    this.setState({filteredList: remainList})
-  }
+  deletePassword = id => {
+    const { passwordList } = this.state;
+    const updatedList = passwordList.filter(item => item.id !== id);
+    this.setState({
+      filteredList: updatedList,
+      count: updatedList.length,
+      passwordList: updatedList,
+    });
+  };
 
   render() {
     const {
